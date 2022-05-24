@@ -162,6 +162,8 @@ window.addEventListener('load', ()=>{
     { id: 143, chars: 'ムサシ'        , name: '武蔵'                              , type: '戦艦'        , class: '大和型'                               },
     { id: 147, chars: 'ベールヌイ'    , name: 'Верный'                            , type: '駆逐艦'      , class: '暁型'                                 },
     { id: 153, chars: 'タイホウ'      , name: '大鳳'                              , type: '装甲空母'    , class: '大鳳型'                               },
+    { id: 154, chars: 'カトリ'        , name: '香取'                              , type: '軽巡洋艦'    , class: '香取型'                               },
+    { id: 155, chars: 'シオイ'        , name: '伊401'                             , type: '潜水艦'      , class: '潜特型'                               },
     { id: 161, chars: 'アキツマル'    , name: 'あきつ丸'                          , type: '揚陸艦'      , class: '特種船丙型'                           },
     { id: 162, chars: 'カモイ'        , name: '神威'                              , type: '補給艦'      , class: '神威型'                               },
     { id: 163, chars: 'マルユ'        , name: 'まるゆ'                            , type: '潜水艦'      , class: '三式潜航輸送艇'                       },
