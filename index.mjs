@@ -320,6 +320,8 @@ window.addEventListener('load', ()=>{
     { id: 885, chars: 'ヴィクトリアス', name: 'Victorious'                        , type: '装甲空母'    , class: 'Illustorious級'                       },
     { id: 895, chars: 'ショウナン'    , name: '昭南'                              , type: '海防艦'      , class: '日振型'                               },
     { id: 900, chars: 'ヤマシオマル'  , name: '山汐丸'                            , type: '特設護衛空母', class: '特2TL型'                              },
+    // { id:  -1, chars: 'マミヤ'        , name: '間宮'                              , type: '給糧艦'      , class: '知床型'                               },
+    // { id:  -2, chars: 'イラコ'        , name: '伊良湖'                            , type: '運送艦'      , class: '伊良湖型'                             },
     // { id: 0, chars: '', name: '', type: '', class: '' },
   ];
 
@@ -454,16 +456,18 @@ window.addEventListener('load', ()=>{
       });
     });
 
+    // remove
+    document.querySelectorAll('#default-keyboard > div').forEach(elm=>elm.classList.remove('wrong', 'exist', 'true'));
+    document.querySelectorAll('#special-keyboard > div').forEach(elm=>elm.classList.remove('wrong', 'exist', 'true'));
+
     keys.default.split('').forEach((char, index)=>{
       if(char == ' ' || !Object.keys(used).includes(char)) return;
       const target = document.querySelector(`#default-keyboard > div:nth-child(${ index + 1 })`);
-      target.classList.remove('wrong', 'exist', 'true');
       target.classList.add(used[char]);
     });
     keys.special.split('').forEach((char, index)=>{
       if(char == ' ' || !Object.keys(used).includes(char)) return;
       const target = document.querySelector(`#special-keyboard > div:nth-child(${ index + 1 })`);
-      target.classList.remove('wrong', 'exist', 'true');
       target.classList.add(used[char]);
     });
   }
@@ -545,6 +549,7 @@ window.addEventListener('load', ()=>{
     answer = ShipList[Math.floor(Math.random() * ShipList.length)];
     console.log('answer:', answer); // debug
     flipCharacters();
+    usedCharacterHighlights();
   }
 
   /**

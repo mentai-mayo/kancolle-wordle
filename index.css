@@ -219,3 +219,36 @@ div#popup-window{
   border-radius: 5px;
   font-size: 14pt;
 }
+div#popup-window-buttons{
+  display: none;
+}
+div#popup-window-buttons > span{
+  margin: 0 10px;
+  border-radius: 5px;
+}
+div#popup-window-buttons > span:hover{
+  background-color: #ddd;
+}
+div#popup-window-buttons > span:active{
+  background-color: #aaa;
+}
+/* single */
+div#popup-window-buttons.single > span:nth-child(2){
+  display: none;
+}
+div#popup-window-buttons.single > span:nth-child(3){
+  display: none;
+}
+/* double */
+div#popup-window-buttons.double{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+div#popup-window-buttons.double > span:nth-child(3){
+  display: none;
+}
+/* triple */
+div#popup-window-buttons.triple{
+  display: grid;
+  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
