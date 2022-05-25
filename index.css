@@ -78,24 +78,6 @@ div#default-keyboard{
   grid-template-rows: 40px 40px 40px 40px 40px;
   grid-gap: 5px;
 }
-div#default-keyboard > div{
-  background-color: #ddd;
-  color: #000;
-  text-align: center;
-  font-weight: bold;
-  font-size: 14pt;
-  border-radius: 5px;
-  padding-top: 6px;
-}
-div#default-keyboard > div:hover{
-  background-color: #aaa;
-}
-div#default-keyboard > div:active{
-  background-color: #888;
-}
-div#default-keyboard > div.none{
-  background-color: #fff;
-}
 
 div#special-keyboard{
   display: grid;
@@ -105,13 +87,8 @@ div#special-keyboard{
   grid-template-rows: 40px 40px 40px 40px 40px;
   grid-gap: 5px;
 }
-div#special-keyboard > div:hover{
-  background-color: #aaa;
-}
-div#special-keyboard > div:active{
-  background-color: #888;
-}
-div#special-keyboard > div{
+
+div.keyboard > div{
   background-color: #ddd;
   color: #000;
   text-align: center;
@@ -120,7 +97,40 @@ div#special-keyboard > div{
   border-radius: 5px;
   padding-top: 6px;
 }
-div#special-keyboard > div.none{
+div.keyboard > div.wrong{
+  background-color: #999;
+}
+div.keyboard > div.exist{
+  background-color: #dd9;
+}
+div.keyboard > div.true{
+  background-color: #9d9;
+}
+div.keyboard > div:hover{
+  background-color: #aaa;
+}
+div.keyboard > div.wrong:hover{
+  background-color: #666;
+}
+div.keyboard > div.exist:hover{
+  background-color: #aa6;
+}
+div.keyboard > div.true:hover{
+  background-color: #6a6;
+}
+div.keyboard > div:active{
+  background-color: #888;
+}
+div.keyboard > div.wrong:active{
+  background-color: #444;
+}
+div.keyboard > div.exist:active{
+  background-color: #884;
+}
+div.keyboard > div.true:active{
+  background-color: #484;
+}
+div.keyboard > div.none{
   background-color: #fff;
 }
 

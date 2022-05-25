@@ -3,7 +3,7 @@ window.addEventListener('load', ()=>{
   
   /**
    * history
-   * @type { (string | null)[] }
+   * @type { { str: string, result: ('wrong'|'exist'|'true')[] }[] }
    */
   let history = [
     {str: '', result: []},
@@ -29,7 +29,7 @@ window.addEventListener('load', ()=>{
    * max characters of ship name
    * @type { number }
    */
-  const maxCharacterNumber = 8;
+  const maxCharacterNumber = 7;
 
   /**
    * max numbers of challenge
@@ -323,29 +323,61 @@ window.addEventListener('load', ()=>{
     // { id: 0, chars: '', name: '', type: '', class: '' },
   ];
 
+  /**
+   * keypad character list
+   * @type { { default: string, special: string } }
+   */
+  const keys = {
+    default: 'ワラヤマハナタサカア リ ミヒニチシキイヲルユムフヌツスクウ レ メヘネテセケエンロヨモホノトソコオ',
+    special: 'ーャパバ ダザガ ァ  ピビ ヂジギ ィ ュプブッヅズグヴゥ  ペベ デゼゲ ェ ョポボ ドゾゴ ォ',
+  };
+
+  // generate history-wordbox
+  for(const _ in new Array(10).fill(null)){
+    let wordBox = (e=>e.classList.add('word-box', 'history')||e)(document.createElement('div'));
+    for(const __ in new Array(7).fill(null)){
+      wordBox.appendChild((e=>e.classList.add('char-box')||e)(document.createElement('div')));
+    }
+    document.querySelector('#history').appendChild(wordBox);
+  }
+
+  // generate keypad keybox & add event listener
+  for(const char of keys.default){
+    /**
+     * @type { Element }
+     */
+    let charBox = document.createElement('div');
+    if(char == ' '){
+      charBox.classList.add('none');
+    } else{
+      charBox.dataset.beforeInput = char;
+      charBox.addEventListener('click', ()=>pushKeyboard(char));
+    }
+    document.querySelector('#default-keyboard').appendChild(charBox);
+  }
+  for(const char of keys.special){
+    /**
+     * @type { Element }
+     */
+    let charBox = document.createElement('div');
+    if(char == ' '){
+      charBox.classList.add('none');
+    } else{
+      charBox.dataset.beforeInput = char;
+      charBox.addEventListener('click', ()=>pushKeyboard(char));
+    }
+    document.querySelector('#special-keyboard').appendChild(charBox);
+  }
+
+  // set enter/delete/reset button listener
+  [ {id: 'enter', entry: pushEnterKey}, {id: 'delete', entry: pushDeleteKey}, {id: 'reset', entry: pushResetKey} ].forEach((data)=>{
+    document.querySelector(`#${data.id}-btn`).addEventListener('click', ()=>data.entry());
+  });
+
   // set popup remove eventlistener
   document.querySelector('div#popup').addEventListener('click', ()=>{
     document.querySelector('div#popup').classList.remove('display');
     document.querySelector('div#popup-window').dataset.beforeInput = document.querySelector('div#popup-window').dataset.default;
-  });
-
-  // set keypad eventlistener
-  document.querySelectorAll('div#keypad > div > div').forEach((/** @type { Element } */ button)=>{
-    if(button.classList.contains('none')) return;
-    if(button.id == 'enter-btn'){
-      button.addEventListener('click', ()=>pushEnterKey());
-      return;
-    }
-    if(button.id == 'delete-btn'){
-      button.addEventListener('click', ()=>pushDeleteKey());
-      return;
-    }
-    if(button.id === 'reset-btn'){
-      button.addEventListener('click', ()=>pushResetKey());
-      return;
-    }
-    const char = button.dataset.beforeInput;
-    button.addEventListener('click', ()=>pushKeyboard(char));
   });
 
   // key inputs
@@ -354,7 +386,7 @@ window.addEventListener('load', ()=>{
    * @param { string } character input character
    */
   function pushKeyboard(character){
-    if(history[history.cur].str.length < maxCharacterNumber + 1)
+    if(history[history.cur].str.length < maxCharacterNumber)
       history[history.cur].str += character;
     console.log(`[${character}    ]`, history);
     flipCharacters();
@@ -369,6 +401,7 @@ window.addEventListener('load', ()=>{
     }
     history[history.cur].result = checkShipName(history[history.cur].str);
     flipCharacters();
+    usedCharacterHighlights();
     if(history.cur == maxChallengeCount - 1){
       // game over
       return;
@@ -404,6 +437,48 @@ window.addEventListener('load', ()=>{
         if(hist.result[index]) charbox.classList.add(hist.result[index]);
       });
     });
+  }
+
+  /**
+   * set used character highlights
+   */
+  function usedCharacterHighlights(){
+    /**
+     * @type { { [char: string]: 'wrong'|'exist'|'true' } }
+     */
+    let used = {};
+
+    history.forEach((hist)=>{
+      hist.str.split('').forEach((char, index)=>{
+        used[char] = compResult(hist.result[index], used[char]);
+      });
+    });
+
+    keys.default.split('').forEach((char, index)=>{
+      if(char == ' ' || !Object.keys(used).includes(char)) return;
+      const target = document.querySelector(`#default-keyboard > div:nth-child(${ index + 1 })`);
+      target.classList.remove('wrong', 'exist', 'true');
+      target.classList.add(used[char]);
+    });
+    keys.special.split('').forEach((char, index)=>{
+      if(char == ' ' || !Object.keys(used).includes(char)) return;
+      const target = document.querySelector(`#special-keyboard > div:nth-child(${ index + 1 })`);
+      target.classList.remove('wrong', 'exist', 'true');
+      target.classList.add(used[char]);
+    });
+  }
+
+  /**
+   * compaire results and return stronger one
+   * wrong < exist < true
+   * @param { 'wrong'|'exist'|'true' } res1 result 1
+   * @param { 'wrong'|'exist'|'true' } res2 result 2
+   * @return { 'wrong'|'exist'|'true'|null }
+   */
+  function compResult(res1, res2){
+    res1 = res1 == 'wrong' ? 1 : res1 == 'exist' ? 2 : res1 == 'true' ? 3 : 0;
+    res2 = res2 == 'wrong' ? 1 : res2 == 'exist' ? 2 : res2 == 'true' ? 3 : 0;
+    return (res1 > res2 ? res1 : res2) == 1 ? 'wrong' : (res1 > res2 ? res1 : res2) == 2 ? 'exist' : (res1 > res2 ? res1 : res2) == 3 ? 'true' : null;
   }
 
   /**
