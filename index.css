@@ -17,10 +17,52 @@ body{
   width: 100%;
   /* grid */
   grid-template-columns: 50% 50%;
+  grid-template-rows: 50px 1fr;
+}
+
+div#header{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  grid-template-columns: 100px 1fr 50px 50px;
+  grid-template-rows: 1fr;
+}
+
+div#game-title{
+  margin: auto;
+  grid-column: 2 / 3;
+  font-size: 18pt;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+div#github-link{
+  display: grid;
+  grid-column: 3 / 4;
+  height: 50px;
+}
+div#github-link > a{
+  margin: 9px;
+  width: 32px;
+  height: 32px;
+}
+
+div#ship-list-btn{
+  grid-column: 4 / 5;
+  height: 50px;
+}
+div#ship-list-btn > img{
+  margin: 9px;
+  cursor: pointer;
 }
 
 div#game-frame{
   margin: auto;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 div#history{
@@ -68,6 +110,8 @@ div.char-box.true{
 div#keypad{
   margin: auto;
   padding: 10px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 div#default-keyboard{
@@ -142,7 +186,7 @@ div#control{
   grid-gap: 5px;
 }
 
-div#reset-btn{
+div#surrender-btn{
   background-color: #ddd;
   color: #000;
   border-radius: 5px;
@@ -152,10 +196,10 @@ div#reset-btn{
   grid-column: 1 / 4;
   grid-row: 1 / 2;
 }
-div#reset-btn:hover{
+div#surrender-btn:hover{
   background-color: #aaa;
 }
-div#reset-btn:active{
+div#surrender-btn:active{
   background-color: #888;
 }
 
@@ -167,7 +211,7 @@ div#enter-btn{
   font-weight: bold;
   padding-top: 6px;
   text-align: center;
-  grid-column: 5 / 7;
+  grid-column: 4 / 9;
   grid-row: 1 / 2;
 }
 div#enter-btn:hover{
@@ -200,10 +244,11 @@ div#popup{
 div#popup.display{
   display: flex;
   position: fixed;
-  left: 0;
+  left: 50%;
+  top: 50px;
   right: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: calc(100% - 50px);
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
   justify-content: center;
@@ -214,7 +259,7 @@ div#popup-window{
   padding: 10px;
   background-color: #fff;
   color: #000;
-  width: 40%;
+  width: 80%;
   box-shadow: 0 0 20px 0 #000;
   border-radius: 5px;
   font-size: 14pt;
@@ -225,6 +270,8 @@ div#popup-window-buttons{
 div#popup-window-buttons > span{
   margin: 0 10px;
   border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
 }
 div#popup-window-buttons > span:hover{
   background-color: #ddd;
@@ -251,4 +298,61 @@ div#popup-window-buttons.double > span:nth-child(3){
 div#popup-window-buttons.triple{
   display: grid;
   grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+
+div#game-result{
+  display: none;
+}
+div#game-result.display{
+  display: flex;
+  position: fixed;
+  width: 50%;
+  height: calc(100% - 50px);
+  left: 50%;
+  top: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+div#game-result-window{
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  box-shadow: 0 0 20px 0 #000;
+  border-radius: 5px;
+  font-size: 14pt;
+}
+div#game-result-window > div[data-ident="type"]{
+  text-align: center;
+  border-bottom: 1px solid #000;
+  letter-spacing: 2px;
+}
+div#game-result-window > div[data-ident="result"]{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+div#game-result-window > div[data-ident="info"]{
+  text-align: center;
+  font-size: 10pt;
+}
+div#game-result-window > div[data-ident="buttons"]{
+  display: grid;
+  margin: 10pt auto auto auto;
+  text-align: center;
+  grid-template-columns: 20% 60% 20%;
+}
+div#game-result-window > div[data-ident="buttons"] > span{
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+  grid-column: 2 / 3;
+}
+div#game-result-window > div[data-ident="buttons"] > span:hover{
+  background-color: #ddd;
+}
+div#game-result-window > div[data-ident="buttons"] > span:active{
+  background-color: #aaa;
 }

@@ -21,7 +21,7 @@ window.addEventListener('load', ()=>{
 
   /**
    * wordle answer
-   * @type { { id: number, name: string, type: string, class: string } }
+   * @type { { id: number, chars: string, name: string, type: string, class: string } }
    */
   let answer = null;
 
@@ -372,14 +372,14 @@ window.addEventListener('load', ()=>{
   }
 
   // set enter/delete/reset button listener
-  [ {id: 'enter', entry: pushEnterKey}, {id: 'delete', entry: pushDeleteKey}, {id: 'reset', entry: pushResetKey} ].forEach((data)=>{
+  [ {id: 'enter', entry: pushEnterKey}, {id: 'delete', entry: pushDeleteKey}, {id: 'surrender', entry: pushResetKey} ].forEach((data)=>{
     document.querySelector(`#${data.id}-btn`).addEventListener('click', ()=>data.entry());
   });
 
-  // set popup remove eventlistener
-  document.querySelector('div#popup').addEventListener('click', ()=>{
-    document.querySelector('div#popup').classList.remove('display');
-    document.querySelector('div#popup-window').dataset.beforeInput = document.querySelector('div#popup-window').dataset.default;
+  // set restart button (at result window) listener
+  document.querySelector('div#game-result-window > div[data-ident="buttons"] > span').addEventListener('click', (event)=>{
+    document.querySelector('div#game-result').classList.remove('display');
+    startNewGame();
   });
 
   // key inputs
@@ -404,8 +404,12 @@ window.addEventListener('load', ()=>{
     history[history.cur].result = checkShipName(history[history.cur].str);
     flipCharacters();
     usedCharacterHighlights();
+    if(history[history.cur].str == answer.chars){
+      displayResult('Clear');
+      return;
+    }
     if(history.cur == maxChallengeCount - 1){
-      // game over
+      displayResult('GameOver');
       return;
     }
     history.cur++;
@@ -423,7 +427,9 @@ window.addEventListener('load', ()=>{
    * push reset (new game) key
    */
   function pushResetKey(){
-    // 
+    makePopupQuestion('現在のゲームを諦めますか？', ['諦める', 'やっぱり続ける'], (selected)=>{
+      if(selected == 1) displayResult('Surrender');
+    });
   }
 
   /**
@@ -553,11 +559,71 @@ window.addEventListener('load', ()=>{
   }
 
   /**
+   * display result window
+   * @type { 'Surrender' | 'Clear' | 'GameOver' }
+   */
+  function displayResult(type){
+    document.querySelector('div#game-result-window > div[data-ident="type"]').dataset.beforeInput = type;
+    document.querySelector('div#game-result-window > div[data-ident="result"]').innerText = answer.chars;
+    document.querySelector('div#game-result-window > div[data-ident="info"] > span[data-ident="ship-type"]').dataset.beforeInput = answer.type;
+    document.querySelector('div#game-result-window > div[data-ident="info"] > span[data-ident="ship-class"]').dataset.beforeInput = answer.class;
+    document.querySelector('div#game-result-window > div[data-ident="info"] > span[data-ident="ship-name"]').dataset.beforeInput = answer.name;
+    document.querySelector('div#game-result').classList.add('display');
+  }
+
+  /**
+   * make popup question window
+   * @param { string } message
+   * @param { string[] } choices
+   * @param { (selected: 1 | 2 | 3)=>void } callback
+   */
+  function makePopupQuestion(message, choices, callback){
+    if(!choices.length) return;
+    choices = choices.slice(0, 3);
+    /**
+     * @type { string | null }
+     */
+    const type = choices.length == 1 ? 'single' : choices.length == 2 ? 'double' : choices.length == 3 ? 'triple' : null;
+    if(!type) return;
+    document.querySelector('div#popup-window-buttons').classList.remove('single', 'double', 'triple');
+    document.querySelector('div#popup-window-buttons').classList.add(type);
+    document.querySelector('div#popup-window').dataset.beforeInput = message;
+    const btnNumCallback = [()=>btnCallback(1), ()=>btnCallback(2), ()=>btnCallback(3)];
+    /**
+     * button onclick callback function
+     * @param { 1 | 2 | 3 } selected 
+     */
+    const btnCallback = (selected)=>{
+      document.querySelector('div#popup').classList.remove('display');
+      document.querySelector('div#popup-window').dataset.beforeInput = document.querySelector('div#popup-window').dataset.default;
+      document.querySelectorAll('div#popup-window-buttons > span').forEach((element, index)=>{
+        element.removeEventListener('click', btnNumCallback[index]);
+        element.dataset.beforeInput = element.dataset.default;
+      });
+      callback(selected);
+    };
+    document.querySelectorAll('div#popup-window-buttons > span').forEach((element, index)=>{
+      element.addEventListener('click', btnNumCallback[index]);
+      if(choices[index]){
+        element.dataset.beforeInput = choices[index];
+      }
+    });
+    document.querySelector('div#popup').classList.add('display');
+  }
+
+  /**
    * make popup window
    * @param { string } message
    */
   function makePopupWindow(message){
+    document.querySelector('div#popup-window-buttons').classList.remove('single', 'double', 'triple');
     document.querySelector('div#popup-window').dataset.beforeInput = message;
+    const callback = ()=>{
+      document.querySelector('div#popup').classList.remove('display');
+      document.querySelector('div#popup-window').dataset.beforeInput = document.querySelector('div#popup-window').dataset.default;
+      document.querySelector('div#popup').removeEventListener('click', callback);
+    };
+    document.querySelector('div#popup').addEventListener('click', callback);
     document.querySelector('div#popup').classList.add('display');
   }
   
@@ -628,4 +694,3 @@ window.addEventListener('load', ()=>{
 
   startNewGame();
 });
-
