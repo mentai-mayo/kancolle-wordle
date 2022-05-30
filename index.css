@@ -36,7 +36,6 @@ div#game-title{
   grid-column: 2 / 3;
   font-size: 18pt;
   letter-spacing: 2px;
-  font-weight: bold;
 }
 
 div#github-link{
@@ -355,4 +354,65 @@ div#game-result-window > div[data-ident="buttons"] > span:hover{
 }
 div#game-result-window > div[data-ident="buttons"] > span:active{
   background-color: #aaa;
+}
+
+div#cmdline{
+  display: none;
+}
+div#cmdline.display{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+}
+div#cmdline > div{
+  margin: auto;
+  width: 80%;
+  font-size: 16pt;
+  border-bottom: 1px solid #000;
+}
+div#cmdline > div > input{
+  font-size: 16pt;
+  border: none;
+  width: calc(100% - 40px);
+}
+div#cmdline > div > input:focus{
+  outline: none;
+}
+
+div#ship-list{
+  display: none;
+}
+div#ship-list.display{
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  height: calc(100% - 50px);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+div#ship-list-window{
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  max-height: calc(100% - 50px);
+  box-shadow: 0 0 20px 0 #000;
+  border-radius: 5px;
+  font-size: 14pt;
+  overflow-y: scroll;
+}
+div#ship-list-window > div[data-ident="list"]{
+  display: grid;
+  margin: 0 50px;
+  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+div#ship-list-window > div[data-ident="list"] > div{
+  display: grid;
+  margin: 0 10px;
+  grid-template-columns: 150px 1fr;
+  border-bottom: 1px solid #aaa;
 }
