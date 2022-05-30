@@ -301,7 +301,7 @@ window.addEventListener('load', ()=>{
     { id: 635, chars: 'チョウゲイ'    , name: '長鯨'                  , type: '潜水母艦'    , class: '迅鯨型'                               },
     { id: 636, chars: 'ヨナ'          , name: '伊47'                  , type: '潜水艦'      , class: '巡潜丙型'                             },
     { id: 637, chars: 'ヨツ'          , name: '第四号海防艦'          , type: '海防艦'      , class: '丁型海防艦'                           },
-    { id: 637, chars: 'ミト'          , name: '第三〇号号海防艦'      , type: '海防艦'      , class: '丁型海防艦'                           },
+    { id: 637, chars: 'ミト'          , name: '第三〇号海防艦'        , type: '海防艦'      , class: '丁型海防艦'                           },
     { id: 641, chars: 'マツ'          , name: '松'                    , type: '駆逐艦'      , class: '松型'                                 },
     { id: 642, chars: 'タケ'          , name: '竹'                    , type: '駆逐艦'      , class: '松型'                                 },
     { id: 643, chars: 'ウメ'          , name: '梅'                    , type: '駆逐艦'      , class: '松型'                                 },
