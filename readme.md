@@ -6,7 +6,7 @@
 
 [Page](//mentai-mayo.github.io/kancolle-wordle/)
 
-version: 0.4.1
+version: 0.5.0
 
 [changelog](changelog.md)
 

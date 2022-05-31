@@ -1,5 +1,11 @@
 # changelog
 
+## version 0.5.0
+
+変更
+- 全てのソースコードをminifyした
+- 艦データ部分を外部jsonにしてfetchで読み込むように
+
 ## version 0.4.1
 
 バグ修正

@@ -1,0 +1,418 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*[data-before-input]::before{
+  content: attr(data-before-input);
+}
+
+body{
+  display: grid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  /* grid */
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50px 1fr;
+}
+
+div#header{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  grid-template-columns: 100px 1fr 50px 50px;
+  grid-template-rows: 1fr;
+}
+
+div#game-title{
+  margin: auto;
+  grid-column: 2 / 3;
+  font-size: 18pt;
+  letter-spacing: 2px;
+}
+
+div#github-link{
+  display: grid;
+  grid-column: 3 / 4;
+  height: 50px;
+}
+div#github-link > a{
+  margin: 9px;
+  width: 32px;
+  height: 32px;
+}
+
+div#ship-list-btn{
+  grid-column: 4 / 5;
+  height: 50px;
+}
+div#ship-list-btn > img{
+  margin: 9px;
+  cursor: pointer;
+}
+
+div#game-frame{
+  margin: auto;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+div#history{
+  display: grid;
+  margin: 10px;
+  grid-gap: 10px;
+}
+div#history.two-columns{
+  grid-template-columns: 50% 50%;
+}
+
+div.word-box{
+  display: grid;
+  width: 410px;
+  height: 50px;
+  /* grid */
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+  grid-gap: 10px;
+}
+
+div.char-box{
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18pt;
+  font-weight: bold;
+  padding-top: 8px;
+}
+div.char-box.wrong{
+  border: 1px solid #666;
+  background-color: #666;
+  color: #fff;
+}
+div.char-box.exist{
+  border: 1px solid #aa0;
+  background-color: #aa0;
+  color: #fff;
+}
+div.char-box.true{
+  border: 1px solid #0a0;
+  background-color: #0a0;
+  color: #fff;
+}
+
+div#keypad{
+  margin: auto;
+  padding: 10px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+div#default-keyboard{
+  display: grid;
+  margin: auto;
+  width: calc( (40px + 5px) * 10 - 5px );
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 40px 40px 40px 40px 40px;
+  grid-gap: 5px;
+}
+
+div#special-keyboard{
+  display: grid;
+  margin: 10px auto auto auto;
+  width: calc( (40px + 5px) * 10 - 5px );
+  grid-template-columns:  40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 40px 40px 40px 40px 40px;
+  grid-gap: 5px;
+}
+
+div.keyboard > div{
+  background-color: #ddd;
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14pt;
+  border-radius: 5px;
+  padding-top: 6px;
+}
+div.keyboard > div.wrong{
+  background-color: #999;
+}
+div.keyboard > div.exist{
+  background-color: #dd9;
+}
+div.keyboard > div.true{
+  background-color: #9d9;
+}
+div.keyboard > div:hover{
+  background-color: #aaa;
+}
+div.keyboard > div.wrong:hover{
+  background-color: #666;
+}
+div.keyboard > div.exist:hover{
+  background-color: #aa6;
+}
+div.keyboard > div.true:hover{
+  background-color: #6a6;
+}
+div.keyboard > div:active{
+  background-color: #888;
+}
+div.keyboard > div.wrong:active{
+  background-color: #444;
+}
+div.keyboard > div.exist:active{
+  background-color: #884;
+}
+div.keyboard > div.true:active{
+  background-color: #484;
+}
+div.keyboard > div.none{
+  background-color: #fff;
+}
+
+div#control{
+  display: grid;
+  margin: 10px auto auto auto;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 40px;
+  grid-gap: 5px;
+}
+
+div#surrender-btn{
+  background-color: #ddd;
+  color: #000;
+  border-radius: 5px;
+  font-size: 12pt;
+  padding-top: 8px;
+  text-align: center;
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+div#surrender-btn:hover{
+  background-color: #aaa;
+}
+div#surrender-btn:active{
+  background-color: #888;
+}
+
+div#enter-btn{
+  background-color: #ddd;
+  color: #000;
+  border-radius: 5px;
+  font-size: 14pt;
+  font-weight: bold;
+  padding-top: 6px;
+  text-align: center;
+  grid-column: 4 / 9;
+  grid-row: 1 / 2;
+}
+div#enter-btn:hover{
+  background-color: #aaa;
+}
+div#enter-btn:active{
+  background-color: #888;
+}
+
+div#delete-btn{
+  background-color: #ddd;
+  color: #000;
+  border-radius: 5px;
+  font-size: 12pt;
+  padding-top: 8px;
+  text-align: center;
+  grid-column: 9 / 11;
+  grid-row: 1 / 2;
+}
+div#delete-btn:hover{
+  background-color: #aaa;
+}
+div#delete-btn:active{
+  background-color: #888;
+}
+
+div#popup{
+  display: none;
+}
+div#popup.display{
+  display: flex;
+  position: fixed;
+  left: 50%;
+  top: 50px;
+  right: 0;
+  width: 50%;
+  height: calc(100% - 50px);
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+div#popup-window{
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  box-shadow: 0 0 20px 0 #000;
+  border-radius: 5px;
+  font-size: 14pt;
+}
+div#popup-window-buttons{
+  display: none;
+}
+div#popup-window-buttons > span{
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+}
+div#popup-window-buttons > span:hover{
+  background-color: #ddd;
+}
+div#popup-window-buttons > span:active{
+  background-color: #aaa;
+}
+/* single */
+div#popup-window-buttons.single > span:nth-child(2){
+  display: none;
+}
+div#popup-window-buttons.single > span:nth-child(3){
+  display: none;
+}
+/* double */
+div#popup-window-buttons.double{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+div#popup-window-buttons.double > span:nth-child(3){
+  display: none;
+}
+/* triple */
+div#popup-window-buttons.triple{
+  display: grid;
+  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+
+div#game-result{
+  display: none;
+}
+div#game-result.display{
+  display: flex;
+  position: fixed;
+  width: 50%;
+  height: calc(100% - 50px);
+  left: 50%;
+  top: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+div#game-result-window{
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  box-shadow: 0 0 20px 0 #000;
+  border-radius: 5px;
+  font-size: 14pt;
+}
+div#game-result-window > div[data-ident="type"]{
+  text-align: center;
+  border-bottom: 1px solid #000;
+  letter-spacing: 2px;
+}
+div#game-result-window > div[data-ident="result"]{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+div#game-result-window > div[data-ident="info"]{
+  text-align: center;
+  font-size: 10pt;
+}
+div#game-result-window > div[data-ident="buttons"]{
+  display: grid;
+  margin: 10pt auto auto auto;
+  text-align: center;
+  grid-template-columns: 20% 60% 20%;
+}
+div#game-result-window > div[data-ident="buttons"] > span{
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+  grid-column: 2 / 3;
+}
+div#game-result-window > div[data-ident="buttons"] > span:hover{
+  background-color: #ddd;
+}
+div#game-result-window > div[data-ident="buttons"] > span:active{
+  background-color: #aaa;
+}
+
+div#cmdline{
+  display: none;
+}
+div#cmdline.display{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+}
+div#cmdline > div{
+  margin: auto;
+  width: 80%;
+  font-size: 16pt;
+  border-bottom: 1px solid #000;
+}
+div#cmdline > div > input{
+  font-size: 16pt;
+  border: none;
+  width: calc(100% - 40px);
+}
+div#cmdline > div > input:focus{
+  outline: none;
+}
+
+div#ship-list{
+  display: none;
+}
+div#ship-list.display{
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  height: calc(100% - 50px);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+div#ship-list-window{
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  max-height: calc(100% - 50px);
+  box-shadow: 0 0 20px 0 #000;
+  border-radius: 5px;
+  font-size: 14pt;
+  overflow-y: scroll;
+}
+div#ship-list-window > div[data-ident="list"]{
+  display: grid;
+  margin: 0 50px;
+  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+div#ship-list-window > div[data-ident="list"] > div{
+  display: grid;
+  margin: 0 10px;
+  grid-template-columns: 150px 1fr;
+  border-bottom: 1px solid #aaa;
+}
