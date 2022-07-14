@@ -1,4 +1,6 @@
 *.txt
 *.csv
-node_modules
 build
+server.bat
+node_modules
+simple-http-server
