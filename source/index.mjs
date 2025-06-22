@@ -29,7 +29,7 @@ window.addEventListener('load', async ()=>{
    * max characters of ship name
    * @type { number }
    */
-  const maxCharacterNumber = 7;
+  const maxCharacterNumber = 8;
 
   /**
    * max numbers of challenge
@@ -53,9 +53,9 @@ window.addEventListener('load', async ()=>{
   };
 
   // generate history-wordbox
-  for(const _ in new Array(10).fill(null)){
+  for(const _ in new Array(maxChallengeCount).fill(null)){
     let wordBox = (e=>e.classList.add('word-box', 'history')||e)(document.createElement('div'));
-    for(const __ in new Array(7).fill(null)){
+    for(const __ in new Array(maxCharacterNumber).fill(null)){
       wordBox.appendChild((e=>e.classList.add('char-box')||e)(document.createElement('div')));
     }
     document.querySelector('#history').appendChild(wordBox);
@@ -115,9 +115,7 @@ window.addEventListener('load', async ()=>{
       document.querySelector('div#cmdline > div > input').value = '';
     }
     if(event.key == 'Enter' && document.querySelector('div#cmdline').classList.contains('display')){
-      document.querySelector('div#cmdline').classList.remove('display');
       cmdlineInput(document.querySelector('div#cmdline > div > input').value);
-      document.querySelector('div#cmdline > div > input').blur();
       document.querySelector('div#cmdline > div > input').value = '';
     }
     // console.log('key:', event.key);
@@ -282,7 +280,7 @@ window.addEventListener('load', async ()=>{
    * @return { ('wrong'|'exist'|'true'|null)[] }
    */
   function checkShipName(target){
-    const result = [null, null, null, null, null, null, null];
+    const result = new Array(maxCharacterNumber).fill(null);
     const ans = answer.chars;
     const count = new Count(answer.chars.split(''));
 
