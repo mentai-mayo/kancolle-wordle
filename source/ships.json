@@ -1505,6 +1505,13 @@
     "class": "夕雲型"
   },
   {
+    "id": 530,
+    "chars": "ルイージトレッリ",
+    "name": "伊504",
+    "type": "潜水艦",
+    "class": "Guglielmo Marconi級"
+  },
+  {
     "id": 531,
     "chars": "サド",
     "name": "佐渡",
