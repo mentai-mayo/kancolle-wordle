@@ -99,6 +99,10 @@ window.addEventListener('load', async ()=>{
 
   // key input observer
   window.addEventListener('keyup', (event)=>{
+    if (document.querySelector("div#popup").classList.contains("display")) {
+      document.querySelector("div#popup").classList.remove("display");
+      return;
+    }
     if(event.ctrlKey && event.key == '/'){
       if(document.querySelector('div#cmdline').classList.contains('display')){
         document.querySelector('div#cmdline').classList.remove('display');
