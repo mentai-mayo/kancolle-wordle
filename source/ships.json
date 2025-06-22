@@ -1610,6 +1610,13 @@
     "class": "Nelson級"
   },
   {
+    "id": 572,
+    "chars": "ロドニー",
+    "name": "Rodney",
+    "type": "戦艦",
+    "class": "Nelson級"
+  },
+  {
     "id": 574,
     "chars": "ゴトランド",
     "name": "Gotland",
@@ -1629,6 +1636,13 @@
     "name": "日進",
     "type": "水上機母艦",
     "class": "日進型"
+  },
+  {
+    "id": 582,
+    "chars": "ナツグモ",
+    "name": "夏雲",
+    "type": "駆逐艦",
+    "class": "朝潮型"
   },
   {
     "id": 583,
@@ -1785,6 +1799,13 @@
     "class": "初春型"
   },
   {
+    "id": 633,
+    "chars": "ユウグレ",
+    "name": "夕暮",
+    "type": "駆逐艦",
+    "class": "初春型"
+  },
+  {
     "id": 634,
     "chars": "ジンゲイ",
     "name": "迅鯨",
@@ -1813,7 +1834,7 @@
     "class": "丁型海防艦"
   },
   {
-    "id": 637,
+    "id": 638,
     "chars": "ミト",
     "name": "第三〇号海防艦",
     "type": "海防艦",
@@ -1890,14 +1911,14 @@
     "class": "夕雲型"
   },
   {
-    "id": 671,
+    "id": 674,
     "chars": "タマナミ",
     "name": "玉波",
     "type": "駆逐艦",
     "class": "夕雲型"
   },
   {
-    "id": 671,
+    "id": 675,
     "chars": "スズナミ",
     "name": "凉波",
     "type": "駆逐艦",
@@ -1909,6 +1930,13 @@
     "name": "Conte di Cavour",
     "type": "戦艦",
     "class": "Conte di Cavour級"
+  },
+  {
+    "id": 881,
+    "chars": "フレイ",
+    "name": "伊201",
+    "type": "潜水艦",
+    "class": "潜高型"
   },
   {
     "id": 882,
@@ -1932,6 +1960,27 @@
     "class": "Illustorious級"
   },
   {
+    "id": 886,
+    "chars": "ハヤシオ",
+    "name": "早潮",
+    "type": "駆逐艦",
+    "class": "陽炎型"
+  },
+  {
+    "id": 891,
+    "chars": "サーモン",
+    "name": "Salmon",
+    "type": "潜水艦",
+    "class": "Salmon級"
+  },
+  {
+    "id": 892,
+    "chars": "ドラム",
+    "name": "Drum",
+    "type": "潜水艦",
+    "class": "Gato級"
+  },
+  {
     "id": 895,
     "chars": "ショウナン",
     "name": "昭南",
@@ -1939,10 +1988,227 @@
     "class": "日振型"
   },
   {
+    "id": 896,
+    "chars": "ブルックリン",
+    "name": "Brooklyn",
+    "type": "軽巡洋艦",
+    "class": "Brooklyn級"
+  },
+  {
     "id": 900,
     "chars": "ヤマシオマル",
     "name": "山汐丸",
     "type": "特設護衛空母",
     "class": "特2TL型"
+  },
+  {
+    "id": 901,
+    "chars": "ジャヴェリン",
+    "name": "Javelin",
+    "type": "駆逐艦",
+    "class": "J級"
+  },
+  {
+    "id": 904,
+    "chars": "ノウミ",
+    "name": "能美",
+    "type": "海防艦",
+    "class": "御蔵型"
+  },
+  {
+    "id": 905,
+    "chars": "クラハシ",
+    "name": "倉橋",
+    "type": "海防艦",
+    "class": "御蔵型"
+  },
+  {
+    "id": 913,
+    "chars": "メリーランド",
+    "name": "Maryland",
+    "type": "戦艦",
+    "class": "Colorado級"
+  },
+  {
+    "id": 921,
+    "chars": "ウクル",
+    "name": "鵜来",
+    "type": "海防艦",
+    "class": "鵜来型"
+  },
+  {
+    "id": 922,
+    "chars": "イナギ",
+    "name": "稲木",
+    "type": "海防艦",
+    "class": "鵜来型"
+  },
+  {
+    "id": 923,
+    "chars": "タスカルーサ",
+    "name": "Tuscaloosa",
+    "type": "重巡洋艦",
+    "class": "New Orleans級"
+  },
+  {
+    "id": 924,
+    "chars": "ネヴァダ",
+    "name": "Nevada",
+    "type": "戦艦",
+    "class": "Nevada級"
+  },
+  {
+    "id": 925,
+    "chars": "ラングレー",
+    "name": "Langley",
+    "type": "軽空母",
+    "class": "Independence級"
+  },
+  {
+    "id": 927,
+    "chars": "ヴァリアント",
+    "name": "Valiant",
+    "type": "戦艦",
+    "class": "Queen Elizabeth級"
+  },
+  {
+    "id": 931,
+    "chars": "レンジャー",
+    "name": "Ranger",
+    "type": "正規空母",
+    "class": "Ranger級"
+  },
+  {
+    "id": 933,
+    "chars": "マサチューセッツ",
+    "name": "Massachusetts",
+    "type": "巡洋戦艦",
+    "class": "South Dakota級"
+  },
+  {
+    "id": 935,
+    "chars": "ジャンバール",
+    "name": "Jean Bart",
+    "type": "巡洋戦艦",
+    "class": "Richelieu級"
+  },
+  {
+    "id": 941,
+    "chars": "ヘイウッド",
+    "name": "Heywood L.E.",
+    "type": "駆逐艦",
+    "class": "Fletcher級"
+  },
+  {
+    "id": 943,
+    "chars": "クマノマル",
+    "name": "熊野丸",
+    "type": "揚陸艦",
+    "class": "特種船M丙型"
+  },
+  {
+    "id": 944,
+    "chars": "ヘイアンマル",
+    "name": "平安丸",
+    "type": "潜水母艦",
+    "class": "改氷川丸級"
+  },
+  {
+    "id": 952,
+    "chars": "フェニックス",
+    "name": "Phoenix",
+    "type": "軽巡洋艦",
+    "class": "Brooklyn級"
+  },
+  {
+    "id": 953,
+    "chars": "アサヒ",
+    "name": "朝日",
+    "type": "練習巡洋艦",
+    "class": "改敷島型"
+  },
+  {
+    "id": 962,
+    "chars": "モガドール",
+    "name": "Mogador",
+    "type": "駆逐艦",
+    "class": "Mogador級"
+  },
+  {
+    "id": 964,
+    "chars": "シラクモ",
+    "name": "白雲",
+    "type": "駆逐艦",
+    "class": "吹雪型"
+  },
+  {
+    "id": 965,
+    "chars": "グロワール",
+    "name": "Gloire",
+    "type": "軽巡洋艦",
+    "class": "La Galissonnière級"
+  },
+  {
+    "id": 966,
+    "chars": "レキシントン",
+    "name": "Lexington",
+    "type": "正規空母",
+    "class": "Lexington級"
+  },
+  {
+    "id": 971,
+    "chars": "ミィム",
+    "name": "伊36",
+    "type": "潜水空母",
+    "class": "巡潜乙型"
+  },
+  {
+    "id": 984,
+    "chars": "ワフー",
+    "name": "Wahoo",
+    "type": "潜水艦",
+    "class": "Gato級"
+  },
+  {
+    "id": 992,
+    "chars": "スギ",
+    "name": "杉",
+    "type": "駆逐艦",
+    "class": "松型"
+  },
+  {
+    "id": 994,
+    "chars": "カヤ",
+    "name": "榧",
+    "type": "駆逐艦",
+    "class": "松型"
+  },
+  {
+    "id": 995,
+    "chars": "オオトマリ",
+    "name": "大泊",
+    "type": "補給艦",
+    "class": "大泊型"
+  },
+  {
+    "id": 1001,
+    "chars": "キーロフ",
+    "name": "Киров",
+    "type": "軽巡洋艦",
+    "class": "Киров級"
+  },
+  {
+    "id": 1003,
+    "chars": "シマネマル",
+    "name": "しまね丸",
+    "type": "補給艦",
+    "class": "特1TL型"
+  },
+  {
+    "id": 1005,
+    "chars": "ミネアポリス",
+    "name": "Minneapolis",
+    "type": "重巡洋艦",
+    "class": "New Orleans級"
   }
 ]
